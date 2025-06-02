@@ -23,3 +23,162 @@ button:hover {
 }
 
 /* Style */
+@font-face {
+  font-family: "Ditty";
+  src: url("../fonts/Ditty.woff2") format("woff2"),
+    url("../fonts/Ditty.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --font-base: "Ditty", Superclarendon, "Bookman Old Style", "URW Bookman",
+    "URW Bookman L", "Georgia Pro", Georgia, serif;
+  --color-background-dark: #07090b;
+  --color-highlight-soft: #cc0000;
+  --color-highlight-dark: #440000;
+  --color-line: #ffffff;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+html,
+body {
+  background-color: var(--color-background-dark);
+}
+
+body {
+  font-family: var(--font-base);
+  font-size: 1.2rem;
+  color: var(--color-line);
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+}
+h1,
+.instructions {
+  align-self: center;
+}
+
+* {
+  text-align: center;
+}
+
+#root > * {
+  flex: 0 0 auto;
+}
+
+#root > .cards {
+  --space: 10px;
+
+  flex: 1 1 0;
+
+  display: grid;
+  padding: var(--space);
+  gap: var(--space);
+
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+}
+
+.card {
+  padding: 0;
+  border: none;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 2% 0;
+  border-radius: 10px;
+  border: 2px solid var(--color-line);
+  background-color: var(--color-highlight-dark);
+  background-image: url("../icons/sync.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.card-error {
+  background-image: url("../icons/error.svg");
+}
+.card-cover {
+  background-size: cover;
+}
+.card:focus {
+  box-shadow: none;
+}
+.card:hover {
+  box-shadow: 4px 4px 2px var(--color-highlight-soft);
+}
+.card:focus .name {
+  color: white;
+}
+.card:hover .name {
+  color: var(--color-highlight-soft);
+}
+
+.name {
+  font-size: 1.4rem;
+  color: white;
+  text-shadow: 0px 0px 8px black, 0px 0px 8px black;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.scores {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+h2 {
+  font-weight: normal;
+}
+
+.number {
+  font-size: 4rem;
+  font-family: Superclarendon, "Bookman Old Style", "URW Bookman",
+    "URW Bookman L", "Georgia Pro", Georgia, serif;
+}
+
+@keyframes scale {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.7);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.scale {
+  animation: scale 0.5s ease-in-out;
+}
+
+@media (min-width: 1200px) {
+  #root > .cards {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+  }
+  .name {
+    font-size: 1.8rem;
+  }
+}
